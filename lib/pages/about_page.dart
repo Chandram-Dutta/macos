@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:macos/providers/name_email_providers.dart';
+import 'package:macos/services/url_launcher.dart';
 import 'package:macos_ui/macos_ui.dart';
 
 class AboutPage extends ConsumerWidget {
@@ -175,6 +176,49 @@ class AboutPage extends ConsumerWidget {
                             ),
                           ),
                         ],
+                      ),
+                      const SizedBox(height: 20),
+                      PushButton(
+                        buttonSize: ButtonSize.large,
+                        child: const Text('About the App'),
+                        onPressed: () {
+                          showMacosAlertDialog(
+                            context: context,
+                            builder: (_) => MacosAlertDialog(
+                              appIcon: const FlutterLogo(
+                                size: 56,
+                              ),
+                              title: Text(
+                                'Built on Flutter 2.10.5',
+                                style:
+                                    MacosTheme.of(context).typography.headline,
+                              ),
+                              message: Text(
+                                'MIT License \nCopyright © 2022 Chandram Dutta \nThanks GroovinChip for the amazing MacOS UI Package.',
+                                textAlign: TextAlign.center,
+                                style:
+                                    MacosTheme.of(context).typography.headline,
+                              ),
+                              primaryButton: PushButton(
+                                buttonSize: ButtonSize.large,
+                                child: const Text(
+                                    'MacOS UI Package(macos_ui @ pub.dev)'),
+                                onPressed: () {
+                                  launchUrl(
+                                      "https://pub.dev/packages/macos_ui");
+                                },
+                              ),
+                              secondaryButton: PushButton(
+                                buttonSize: ButtonSize.large,
+                                child: const Text('Ok'),
+                                isSecondary: true,
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

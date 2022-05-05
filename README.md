@@ -1,6 +1,8 @@
 # macos
 
-A new Flutter project.
+A Flutter Project that uses the [macos_ui package](https://pub.dev/packages/macos_ui).
+
+![App Screenshot](appscreenshot.png)
 
 ## Getting Started
 
